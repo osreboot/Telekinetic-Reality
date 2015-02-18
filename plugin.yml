@@ -1,0 +1,12 @@
+name: Telekinetic_Reality
+main: com.osreboot.tr.main.Main
+version: 1.0.2.0
+description: Telekinetic Reality by Os_Reboot
+softdepend: [WorldGuard, PreciousStones]
+commands:
+   syntax:
+      description: Opens syntax tree.
+   tr:
+      description: Gets plugin version.
+   trlog:
+      description: Gets latest changelog.
