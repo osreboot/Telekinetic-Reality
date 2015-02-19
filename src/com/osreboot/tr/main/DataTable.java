@@ -38,6 +38,8 @@ public class DataTable {
 	public int total = 0;
 	public int syntax = 0;
 	public int scroll = 0;
+	
+	private Random random;
 
 	public static HashMap<UUID, String> floaters = new HashMap<UUID, String>();
 	public static HashMap<UUID, String> floatersSnd = new HashMap<UUID, String>();
@@ -62,6 +64,8 @@ public class DataTable {
 		this.total = verifyAndCache(f, "total");
 		this.syntax = verifyAndCache(f, "syntax");
 
+		this.random = new Random();
+		
 		tables.add(this);
 	}
 
@@ -184,7 +188,7 @@ public class DataTable {
 	}
 
 	public void ping(int r){
-		if(new Random().nextInt(r) == 0){
+		if(random.nextInt(r) == 0){
 			if(this.discovered < 10 + (this.total/4)) this.discovered++; else{
 				this.discovered = 0;
 				this.total++;
