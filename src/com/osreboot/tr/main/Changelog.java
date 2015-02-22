@@ -23,7 +23,8 @@ public class Changelog {
 		"0.4.3.0 [Fix] (Added wall signs to the blacklist), (Negative effects now actually stack with multiple block levitation), (Changed description of \"Exemption\"). [Addition] (Split the potion effects of \"Exemption\" into the new node \"Negation\").",
 		"1.0.0.0 [Addition] (Added fist attempt at an external protection hook: WorldGuard), (Added test nodes \"Augmentation\" and \"Cue\"). [Fix] (Various optimizations), (Fixed errors when the server reloads and a player is still in the skill tree menu), (Fixed error with \"Subtraction\" node), (Added empty player hand requirement to various nodes).",
 		"1.0.1.0 [Addition] (Added PreciousStones protection hook). [Fix] (Added empty player hand requirement to \"Liberation\"), (Fixed errors with the /reload command for every node).",
-		"1.0.2.0 [Addition] (Added various methods to prepare for addon support). [Fix] (Fixed various warnings, removed unused imports), (Fixed a memory leak)."};
+		"1.0.2.0 [Addition] (Added various methods to prepare for addon support). [Fix] (Fixed various warnings, removed unused imports), (Fixed a memory leak).",
+		"1.0.3.0 [Addition] (Added descriptions to \"Augmentation\" and \"Cue\"). [Fix] (Cleaned up DataTable code)."};
 	
 	private static String news2 = "1.0.0.0: Welp, this is it. Full version is out. There is going to be some chaos, let the detrimentals run wild! ;)";
 	@SuppressWarnings("unused")
@@ -42,9 +43,7 @@ public class Changelog {
 	//TODOS
 	/*
 	 * - Make help menu more clear (seriously)
-	 * - Add descriptions for the two new nodes
 	 * - Add aqueous nodes
-	 * - Add PreciousStones protection hook
 	 * 
 	 */
 }

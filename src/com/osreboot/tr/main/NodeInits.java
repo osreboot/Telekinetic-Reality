@@ -83,12 +83,12 @@ public class NodeInits {
 		String[] d4 = Util.chop(ChatColor.DARK_GRAY + "Hold shift when hitting the ground.", length, "");
 		new Node(11, "subtraction", ChatColor.GREEN + "Subtraction", new ItemStack(Material.SLIME_BALL), toArray(a12), 20, Node.findNode("coordination"), 5, new Subtraction(), 30, null, toArray(d4));
 		
-		String[] a21 = Util.chop(ChatColor.BLUE + "<TODO> " + ChatColor.LIGHT_PURPLE + " <TODO>", length, "");
+		String[] a21 = Util.chop(ChatColor.BLUE + "\"It does not matter how slowly you go as long as you do not stop.\" " + ChatColor.LIGHT_PURPLE + " Launch yourself upward with a telekinetic shockwave.", length, "");
 		String[] d12 = Util.chop(ChatColor.DARK_GRAY + "Left click the ground when \"Coordination\" is active to gain a massive temporary jump boost.", length, "");
 		new Node(20, "augmentation", ChatColor.GREEN + "Augmentation", new ItemStack(Material.GOLD_BOOTS), toArray(a21), 21, Node.findNode("subtraction"), 15, new Augmentation(), 40, null, toArray(d12));
 		//TODO aug ping
 		
-		String[] a22 = Util.chop(ChatColor.BLUE + "<TODO> " + ChatColor.LIGHT_PURPLE + " <TODO>", length, "");
+		String[] a22 = Util.chop(ChatColor.BLUE + "\"Either I will find a way, or I will make one.\" " + ChatColor.LIGHT_PURPLE + " Compress the surrounding air into a method of propulsion.", length, "");
 		String[] d13 = Util.chop(ChatColor.DARK_GRAY + "Left click in the air when \"Coordination\" is active to charge. Left click again to be launched in the facing direction.", length, "");
 		new Node(21, "cue", ChatColor.GREEN + "Cue", new ItemStack(Material.DISPENSER), toArray(a22), 12, Node.findNode("augmentation"), 5, new Cue(), 25, null, toArray(d13));
 		//TODO cue ping
