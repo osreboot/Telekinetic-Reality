@@ -7,13 +7,26 @@ import java.util.UUID;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
+import org.bukkit.Material;
+import org.bukkit.block.Block;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.util.BlockIterator;
 import org.bukkit.util.Vector;
 
 public class Util {
 
+	public static Block getTargetBlock(Player p, int range){
+		BlockIterator bi = new BlockIterator(p, range);
+		Block block = bi.next();
+		while(bi.hasNext()){
+			block = bi.next();
+			if(block.getType() != Material.AIR) break;
+		}
+		return block;
+	}
+	
 	public static ArrayList<Entity> getEntitysFromUUIDs(ArrayList<UUID> u){
 		ArrayList<Entity> e = new ArrayList<Entity>();
 		for(UUID uid : u){

@@ -1,6 +1,6 @@
 name: Telekinetic_Reality
 main: com.osreboot.tr.main.Main
-version: 1.0.3.0
+version: 1.1.0.0
 description: Telekinetic Reality by Os_Reboot
 softdepend: [WorldGuard, PreciousStones]
 commands:

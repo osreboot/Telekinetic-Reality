@@ -13,6 +13,7 @@ import org.bukkit.inventory.ItemStack;
 import com.osreboot.tr.main.DataTable;
 import com.osreboot.tr.main.Main;
 import com.osreboot.tr.main.NodeEffects;
+import com.osreboot.tr.main.Util;
 
 public class Divergence extends NodeEffects{
 
@@ -32,8 +33,8 @@ public class Divergence extends NodeEffects{
 		if(d.nodes[17] > 0){
 			if(evt.getItemDrop().getItemStack().getType() == Material.TORCH){
 				if(cooldown.get(d.getPlayer().getName()) == 0){
-					Block b = evt.getPlayer().getTargetBlock(null, d.nodes[17]);
-					if(Hallucination.active.containsKey(d.getPlayer().getName()) && Hallucination.active.get(d.getPlayer().getName()) > 0) b = evt.getPlayer().getTargetBlock(null, d.nodes[17]*2);
+					Block b = Util.getTargetBlock(evt.getPlayer(), d.nodes[17]);
+					if(Hallucination.active.containsKey(d.getPlayer().getName()) && Hallucination.active.get(d.getPlayer().getName()) > 0) b = Util.getTargetBlock(evt.getPlayer(), d.nodes[17]*2);
 					if(Main.breakables.containsKey(b.getType()) && Main.canModify(d.getPlayer(), b.getLocation())){
 						evt.getItemDrop().remove();
 						d.getPlayer().playEffect(b.getLocation(), Effect.STEP_SOUND, b.getType());

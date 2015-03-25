@@ -68,6 +68,10 @@ public class Main extends JavaPlugin implements Listener{
 		blacklist.add(Material.SIGN_POST);
 		blacklist.add(Material.WALL_SIGN);
 		blacklist.add(Material.ITEM_FRAME);
+		//as of 1.1.0.0
+		blacklist.add(Material.ARMOR_STAND);
+		blacklist.add(Material.BANNER);
+		blacklist.add(Material.BARRIER);
 
 		liquids.add(Material.WATER);
 		liquids.add(Material.STATIONARY_WATER);

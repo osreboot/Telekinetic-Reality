@@ -13,6 +13,7 @@ import org.bukkit.event.player.PlayerInteractEvent;
 import com.osreboot.tr.main.DataTable;
 import com.osreboot.tr.main.Main;
 import com.osreboot.tr.main.NodeEffects;
+import com.osreboot.tr.main.Util;
 
 public class Reticence extends NodeEffects{
 
@@ -33,7 +34,7 @@ public class Reticence extends NodeEffects{
 				if(evt.getAction() == Action.LEFT_CLICK_BLOCK && evt.getPlayer().isSneaking() && evt.getPlayer().getItemInHand().getType() == Material.AIR){
 					if(cooldown.get(d.getPlayer().getName()) == 0){
 						d.getPlayer().playSound(d.getPlayer().getLocation(), Sound.AMBIENCE_CAVE, 10, 1);
-						Location l = evt.getPlayer().getTargetBlock(null, 100).getLocation();
+						Location l = Util.getTargetBlock(evt.getPlayer(), 100).getLocation();
 						int range = 10 + (d.nodes[18]*2);
 						for(int x = -range; x <= range; x++){
 							for(int y = -range; y <= range; y++){
