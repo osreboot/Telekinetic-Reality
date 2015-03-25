@@ -26,7 +26,7 @@ public class Augmentation extends NodeEffects{
 
 						for(int x = -10; x <= 10; x++) for(int y = -1; y <= 1; y++) for(int z = -10; z <= 10; z++){
 							Location l = d.getPlayer().getLocation().getBlock().getLocation().add(x, y, z);
-							if(l.distance(d.getPlayer().getLocation()) < (d.nodes[20]/15) + 2) if(l.getBlock().getType() != Material.AIR) d.getPlayer().playEffect(l, Effect.STEP_SOUND, l.getBlock().getTypeId());
+							if(l.distance(d.getPlayer().getLocation()) < (d.nodes[20]/15) + 2) if(l.getBlock().getType() != Material.AIR) d.getPlayer().playEffect(l, Effect.STEP_SOUND, l.getBlock().getType());
 						}
 
 						effectSetCooldown(d.getPlayer(), 260 - (d.nodes[20] * 5));

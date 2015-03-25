@@ -42,7 +42,7 @@ public class Dissolution extends NodeEffects{
 										if(Main.canModify(d.getPlayer(), l.getBlock().getLocation())){
 											if(Main.breakables.containsKey(l.getBlock().getType()) && new Random().nextInt(d.nodes[15]*2) != 0){
 												ItemStack i = new ItemStack(Main.breakables.get(l.getBlock().getType()));
-												d.getPlayer().playEffect(l, Effect.STEP_SOUND, l.getBlock().getTypeId());
+												d.getPlayer().playEffect(l, Effect.STEP_SOUND, l.getBlock().getType());
 												Bukkit.getWorld(d.getPlayer().getWorld().getName()).dropItemNaturally(l, i);
 												l.getBlock().setType(Material.AIR);
 											}
@@ -54,7 +54,7 @@ public class Dissolution extends NodeEffects{
 							d.ping(40);
 							cooldown.put(d.getPlayer().getName(), 120 - (d.nodes[15]*3));
 						}else{
-							d.getPlayer().playEffect(evt.getClickedBlock().getLocation(), Effect.STEP_SOUND, evt.getClickedBlock().getTypeId());
+							d.getPlayer().playEffect(evt.getClickedBlock().getLocation(), Effect.STEP_SOUND, evt.getClickedBlock().getType());
 							d.ping(250);
 						}
 					}
