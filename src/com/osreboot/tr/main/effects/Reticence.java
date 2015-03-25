@@ -43,7 +43,7 @@ public class Reticence extends NodeEffects{
 										Bukkit.getScheduler().scheduleSyncDelayedTask(Main.plugin, new Runnable(){
 											public void run(){
 												d.getPlayer().playEffect(l2, Effect.STEP_SOUND, l2.getBlock().getTypeId());
-												if(Main.canModify(d.getPlayer(), l2.getBlock().getLocation())) l2.getBlock().breakNaturally(); //TODO test this protection thoroughly
+												if(Main.canModify(d.getPlayer(), l2.getBlock().getLocation())) l2.getBlock().breakNaturally();
 											}
 										}, (long)(l2.distance(l)*2));
 									}
@@ -53,7 +53,7 @@ public class Reticence extends NodeEffects{
 						cooldown.put(d.getPlayer().getName(), 1400 - (d.nodes[18]*40));
 						d.ping(20);
 					}else{
-						d.getPlayer().playEffect(d.getPlayer().getLocation(), Effect.EXTINGUISH, 1000);
+						d.getPlayer().playEffect(d.getPlayer().getLocation(), Effect.EXTINGUISH, null);
 						d.ping(250);
 					}
 				}

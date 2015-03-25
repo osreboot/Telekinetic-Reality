@@ -34,20 +34,20 @@ public class Divergence extends NodeEffects{
 				if(cooldown.get(d.getPlayer().getName()) == 0){
 					Block b = evt.getPlayer().getTargetBlock(null, d.nodes[17]);
 					if(Hallucination.active.containsKey(d.getPlayer().getName()) && Hallucination.active.get(d.getPlayer().getName()) > 0) b = evt.getPlayer().getTargetBlock(null, d.nodes[17]*2);
-					if(Main.breakables.containsKey(b.getType()) && Main.canModify(d.getPlayer(), b.getLocation())){ //TODO test this protection thoroughly
+					if(Main.breakables.containsKey(b.getType()) && Main.canModify(d.getPlayer(), b.getLocation())){
 						evt.getItemDrop().remove();
-						d.getPlayer().playEffect(b.getLocation(), Effect.STEP_SOUND, b.getTypeId());
+						d.getPlayer().playEffect(b.getLocation(), Effect.STEP_SOUND, b.getType());
 						Bukkit.getWorld(d.getPlayer().getWorld().getName()).dropItemNaturally(b.getLocation(), new ItemStack(Main.breakables.get(b.getType())));
 						b.setType(Material.TORCH);
 						cooldown.put(d.getPlayer().getName(), 125 - (d.nodes[17]*4));
 						d.ping(40);
 					}else{
 						evt.setCancelled(true);
-						d.getPlayer().playEffect(d.getPlayer().getLocation(), Effect.CLICK1, 1000);
+						d.getPlayer().playEffect(d.getPlayer().getLocation(), Effect.CLICK1, null);
 					}
 				}else{
 					evt.setCancelled(true);
-					d.getPlayer().playEffect(d.getPlayer().getLocation(), Effect.EXTINGUISH, 1000);
+					d.getPlayer().playEffect(d.getPlayer().getLocation(), Effect.EXTINGUISH, null);
 				}
 			}
 		}

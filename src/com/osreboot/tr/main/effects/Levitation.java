@@ -28,7 +28,7 @@ public class Levitation extends NodeEffects{
 	@Override
 	public void onInteract(PlayerInteractEvent evt, DataTable d){
 		Player p = evt.getPlayer();
-		if(evt.getPlayer().getItemInHand().getTypeId() == 0){
+		if(evt.getPlayer().getItemInHand().getType() == Material.AIR){
 			if(p.isSneaking()){
 				if(evt.getAction() == Action.RIGHT_CLICK_BLOCK){
 					Control.crouching.add(p.getName());
@@ -38,7 +38,7 @@ public class Levitation extends NodeEffects{
 							buildup.put(d.getPlayer().getName(), 0);
 							Material m = evt.getClickedBlock().getType();
 							byte bte = evt.getClickedBlock().getData();
-							if(!Main.blacklist.contains(m) && Main.canModify(d.getPlayer(), evt.getClickedBlock().getLocation())){ //TODO test this protection thoroughly
+							if(!Main.blacklist.contains(m) && Main.canModify(d.getPlayer(), evt.getClickedBlock().getLocation())){
 								d.ping(6);
 								evt.getClickedBlock().setType(Material.AIR);
 								FallingBlock b = evt.getPlayer().getWorld().spawnFallingBlock(evt.getClickedBlock().getLocation(), m, bte);
@@ -57,7 +57,7 @@ public class Levitation extends NodeEffects{
 						if(p.isSneaking()){
 							Util.dropPerfectly(e);
 						}
-						ProtectionManager.abandoned.put(e.getUniqueId(), d.getPlayer().getUniqueId()); //TODO test this protection thoroughly
+						ProtectionManager.abandoned.put(e.getUniqueId(), d.getPlayer().getUniqueId());
 					}
 				}
 			}
@@ -80,12 +80,12 @@ public class Levitation extends NodeEffects{
 			if(new Random().nextInt(100 + (d.nodes[3]*20)) == 0 && d.nodes[3] != 30){
 				DataTable.floaters.remove(e.getUniqueId());
 				Util.dropPerfectly(e);
-				ProtectionManager.abandoned.put(e.getUniqueId(), d.getPlayer().getUniqueId()); //TODO test this protection thoroughly
+				ProtectionManager.abandoned.put(e.getUniqueId(), d.getPlayer().getUniqueId());
 			}
 			if(e.getLocation().distance(d.getPlayer().getLocation()) > d.nodes[19] + 10){
 				DataTable.floaters.remove(e.getUniqueId());
 				Util.dropPerfectly(e);
-				ProtectionManager.abandoned.put(e.getUniqueId(), d.getPlayer().getUniqueId()); //TODO test this protection thoroughly
+				ProtectionManager.abandoned.put(e.getUniqueId(), d.getPlayer().getUniqueId());
 			}
 			e.setVelocity(new Vector(e.getVelocity().getX(), 0.1, e.getVelocity().getZ()));
 			if(e.getTicksLived() > 300){
@@ -98,7 +98,7 @@ public class Levitation extends NodeEffects{
 			if(e.getLocation().getBlockY() > e.getLocation().getWorld().getMaxHeight() - 3){
 				DataTable.floaters.remove(e.getUniqueId());
 				Util.dropPerfectly(e);
-				ProtectionManager.abandoned.put(e.getUniqueId(), d.getPlayer().getUniqueId()); //TODO test this protection thoroughly
+				ProtectionManager.abandoned.put(e.getUniqueId(), d.getPlayer().getUniqueId());
 			}
 		}
 	}

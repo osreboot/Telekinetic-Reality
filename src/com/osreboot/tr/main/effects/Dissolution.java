@@ -59,7 +59,7 @@ public class Dissolution extends NodeEffects{
 						}
 					}
 				}else{
-					d.getPlayer().playEffect(d.getPlayer().getLocation(), Effect.EXTINGUISH, 1000);
+					d.getPlayer().playEffect(d.getPlayer().getLocation(), Effect.EXTINGUISH, null);
 				}
 			}
 		}

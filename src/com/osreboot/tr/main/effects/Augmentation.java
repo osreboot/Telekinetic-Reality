@@ -32,7 +32,7 @@ public class Augmentation extends NodeEffects{
 						effectSetCooldown(d.getPlayer(), 260 - (d.nodes[20] * 5));
 					}
 				}else{
-					d.getPlayer().playEffect(d.getPlayer().getLocation(), Effect.EXTINGUISH, 1000);
+					d.getPlayer().playEffect(d.getPlayer().getLocation(), Effect.EXTINGUISH, null);
 				}
 			}
 		}
