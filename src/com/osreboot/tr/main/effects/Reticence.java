@@ -43,7 +43,7 @@ public class Reticence extends NodeEffects{
 									if(Main.lights.containsKey(l2.getBlock().getType())){
 										Bukkit.getScheduler().scheduleSyncDelayedTask(Main.plugin, new Runnable(){
 											public void run(){
-												d.getPlayer().playEffect(l2, Effect.STEP_SOUND, l2.getBlock().getTypeId());
+												d.getPlayer().playEffect(l2, Effect.STEP_SOUND, l2.getBlock().getType());
 												if(Main.canModify(d.getPlayer(), l2.getBlock().getLocation())) l2.getBlock().breakNaturally();
 											}
 										}, (long)(l2.distance(l)*2));

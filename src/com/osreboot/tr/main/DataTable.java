@@ -170,7 +170,7 @@ public class DataTable {
 			if(Node.findNode(i).getEffects() != null && nodes[i] != 0)
 				Node.findNode(i).getEffects().onInteract(evt, this);
 		}
-		if(first && evt.getPlayer().getItemInHand().getTypeId() == 0 && p.isSneaking() && evt.getAction() == Action.RIGHT_CLICK_BLOCK) ping(100);
+		if(first && evt.getPlayer().getItemInHand().getType() == Material.AIR && p.isSneaking() && evt.getAction() == Action.RIGHT_CLICK_BLOCK) ping(100);
 	}
 
 	public void onInteractEntity(PlayerInteractEntityEvent evt){
