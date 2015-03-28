@@ -56,13 +56,13 @@ public class Util {
 		}
 	}
 	
-	public static void clearHash(HashMap<UUID, String> h, String n){
+	public static void clearHash(HashMap<UUID, UUID> h, UUID n){
 		ArrayList<UUID> t = new ArrayList<UUID>();
 		for(UUID u : h.keySet()) if(h.get(u) == n) t.add(u);
 		for(UUID u : t) h.remove(u);
 	}
 	
-	public static ArrayList<UUID> getPlayerUUIDS(HashMap<UUID, String> h, String n){
+	public static ArrayList<UUID> getPlayerUUIDS(HashMap<UUID, UUID> h, UUID n){
 		ArrayList<UUID> a = new ArrayList<UUID>();
 		for(UUID u : h.keySet()) if(h.get(u) == n && !a.contains(u)) a.add(u);
 		return a;

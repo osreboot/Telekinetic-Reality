@@ -19,6 +19,7 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
+import com.osreboot.tr.apis.FileAPI;
 import com.osreboot.tr.apis.StatsFile;
 
 public class DataTable {
@@ -38,24 +39,30 @@ public class DataTable {
 	public int total = 0;
 	public int syntax = 0;
 	public int scroll = 0;
-	
+
 	private Random random;
 
-	public static HashMap<UUID, String> floaters = new HashMap<UUID, String>();
-	public static HashMap<UUID, String> floatersSnd = new HashMap<UUID, String>();
+	//First UUID is the entity, second UUID is the player
+	public static HashMap<UUID, UUID> floaters = new HashMap<UUID, UUID>();
+	public static HashMap<UUID, UUID> floatersSnd = new HashMap<UUID, UUID>();
 
 	public DataTable(Player p){
 		this.p = p;
 
-		StatsFile f = new StatsFile(p.getName(), "tr_playerdata");
+		StatsFile f = new StatsFile(p.getUniqueId().toString(), "tr_playerdata");
 		if(!f.doesExist()){
-			f.generate();
-			f.load();
-			for(Node n : Node.nodes) f.getConfiguration().set(n.getName(), "0");
-			f.getConfiguration().set("skp", "0");
-			f.getConfiguration().set("discovered", "0");
-			f.getConfiguration().set("total", "0");
-			f.getConfiguration().set("syntax", "0");
+			if(FileAPI.doesFileExist(p.getName() + ".yml", "tr_playerdata")){//TODO the FileAPI is sloppy and outdated
+				f = new StatsFile(p.getName(), "tr_playerdata");
+				f.load();
+			}else{
+				f.generate();
+				f.load();
+				for(Node n : Node.nodes) f.getConfiguration().set(n.getName(), "0");
+				f.getConfiguration().set("skp", "0");
+				f.getConfiguration().set("discovered", "0");
+				f.getConfiguration().set("total", "0");
+				f.getConfiguration().set("syntax", "0");
+			}
 		}else f.load();
 
 		for(Node n : Node.nodes) this.nodes[n.getIndex()] = verifyAndCache(f, n.getName());
@@ -65,7 +72,7 @@ public class DataTable {
 		this.syntax = verifyAndCache(f, "syntax");
 
 		this.random = new Random();
-		
+
 		tables.add(this);
 	}
 
@@ -87,9 +94,9 @@ public class DataTable {
 	}
 
 	public void save(){
-		Util.clearHash(floaters, p.getName());
-		Util.clearHash(floatersSnd, p.getName());
-		StatsFile f = new StatsFile(p.getName(), "tr_playerdata");
+		Util.clearHash(floaters, p.getUniqueId());
+		Util.clearHash(floatersSnd, p.getUniqueId());
+		StatsFile f = new StatsFile(p.getUniqueId().toString(), "tr_playerdata");
 		f.load();
 		f.getConfiguration().set("skp", skp);
 		f.getConfiguration().set("discovered", discovered);
@@ -109,7 +116,7 @@ public class DataTable {
 		i.clear();
 
 		Main.holidayify(this.i);
-		
+
 		for(Node n : Node.nodes){
 			if((n.getPreReq() == null || nodes[n.getPreReq().getIndex()] >= n.getPreReqL()) && n.isCooperative(this) && n.getInvSpace() + (scroll*9) < 54) i.setItem(n.getInvSpace() + (scroll*9), n.getItem());
 		}
@@ -128,10 +135,10 @@ public class DataTable {
 				item.setItemMeta(m);
 			}
 		}
-		
+
 		ItemStack title = new ItemStack(Material.SKULL_ITEM, 1, (short)SkullType.PLAYER.ordinal());
 		ItemMeta m = title.getItemMeta();
-		
+
 		String name = "";
 		if(total >= 40) name += ChatColor.AQUA;
 		if(total >= 80) name += ChatColor.DARK_AQUA;
@@ -146,7 +153,7 @@ public class DataTable {
 		else if(syntax == 3) name += "Detrimental";
 		else if(syntax == 4) name += "Oculus";
 		else name += "Neophyte";
-		
+
 		m.setDisplayName(name);
 		title.setItemMeta(m);
 		i.setItem(0, title);

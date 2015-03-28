@@ -32,7 +32,7 @@ public class Levitation extends NodeEffects{
 			if(p.isSneaking()){
 				if(evt.getAction() == Action.RIGHT_CLICK_BLOCK){
 					Control.crouching.add(p.getName());
-					if(Util.getPlayerUUIDS(DataTable.floaters, d.getPlayer().getName()).size() <= d.nodes[2]*2){
+					if(Util.getPlayerUUIDS(DataTable.floaters, d.getPlayer().getUniqueId()).size() <= d.nodes[2]*2){
 						if(!buildup.containsKey(d.getPlayer().getName())) buildup.put(d.getPlayer().getName(), 0);
 						if(buildup.get(d.getPlayer().getName()) > 30 - d.nodes[0]){
 							buildup.put(d.getPlayer().getName(), 0);
@@ -42,7 +42,7 @@ public class Levitation extends NodeEffects{
 								d.ping(6);
 								evt.getClickedBlock().setType(Material.AIR);
 								FallingBlock b = evt.getPlayer().getWorld().spawnFallingBlock(evt.getClickedBlock().getLocation(), m, bte);
-								DataTable.floaters.put(b.getUniqueId(), d.getPlayer().getName());
+								DataTable.floaters.put(b.getUniqueId(), d.getPlayer().getUniqueId());
 								b.setDropItem(false);
 							}
 						}else if(new Random().nextInt(1) == 0) buildup.put(d.getPlayer().getName(), buildup.get(d.getPlayer().getName()) + 1);
@@ -50,9 +50,9 @@ public class Levitation extends NodeEffects{
 				}
 			}
 			if((evt.getAction() == Action.LEFT_CLICK_AIR || evt.getAction() == Action.LEFT_CLICK_BLOCK) && (p.isSneaking() || p.isSprinting())){
-				if(Util.getEntitysFromUUIDs(Util.getPlayerUUIDS(DataTable.floaters, d.getPlayer().getName())).size() > 0){ 
+				if(Util.getEntitysFromUUIDs(Util.getPlayerUUIDS(DataTable.floaters, d.getPlayer().getUniqueId())).size() > 0){ 
 					d.ping(5);
-					for(Entity e : Util.getEntitysFromUUIDs(Util.getPlayerUUIDS(DataTable.floaters, d.getPlayer().getName()))){
+					for(Entity e : Util.getEntitysFromUUIDs(Util.getPlayerUUIDS(DataTable.floaters, d.getPlayer().getUniqueId()))){
 						DataTable.floaters.remove(e.getUniqueId());
 						if(p.isSneaking()){
 							Util.dropPerfectly(e);
@@ -68,7 +68,7 @@ public class Levitation extends NodeEffects{
 	public void tick(DataTable d){
 		if(buildup.containsKey(d.getPlayer().getName()) && buildup.get(d.getPlayer().getName()) > 0) if(new Random().nextInt(10) == 0) buildup.put(d.getPlayer().getName(), buildup.get(d.getPlayer().getName()) - 1);
 
-		for(int i = 0; i < Util.getEntitysFromUUIDs(Util.getPlayerUUIDS(DataTable.floaters, d.getPlayer().getName())).size(); i++){
+		for(int i = 0; i < Util.getEntitysFromUUIDs(Util.getPlayerUUIDS(DataTable.floaters, d.getPlayer().getUniqueId())).size(); i++){
 			d.ping(100);
 			if(new Random().nextInt(800 + (d.nodes[22]*50)) == 0 && d.nodes[22] != 30) d.getPlayer().addPotionEffect(new PotionEffect(PotionEffectType.BLINDNESS, new Random().nextInt(120), 1));
 			if(new Random().nextInt(600 + (d.nodes[22]*50)) == 0 && d.nodes[22] != 30) d.getPlayer().addPotionEffect(new PotionEffect(PotionEffectType.SLOW, new Random().nextInt(200), 1));
@@ -76,7 +76,7 @@ public class Levitation extends NodeEffects{
 			if(new Random().nextInt(1000 + (d.nodes[22]*50)) == 0 && d.nodes[22] != 30) d.getPlayer().addPotionEffect(new PotionEffect(PotionEffectType.CONFUSION, new Random().nextInt(240), 1));
 			if(new Random().nextInt(100 + (d.nodes[4]*30)) == 0 && d.nodes[4] != 30) d.getPlayer().damage(new Random().nextInt(8));
 		}
-		for(Entity e : Util.getEntitysFromUUIDs(Util.getPlayerUUIDS(DataTable.floaters, d.getPlayer().getName()))){
+		for(Entity e : Util.getEntitysFromUUIDs(Util.getPlayerUUIDS(DataTable.floaters, d.getPlayer().getUniqueId()))){
 			if(new Random().nextInt(100 + (d.nodes[3]*20)) == 0 && d.nodes[3] != 30){
 				DataTable.floaters.remove(e.getUniqueId());
 				Util.dropPerfectly(e);
@@ -91,7 +91,7 @@ public class Levitation extends NodeEffects{
 			if(e.getTicksLived() > 300){
 				DataTable.floaters.remove(e.getUniqueId());
 				FallingBlock b = e.getWorld().spawnFallingBlock(e.getLocation(), ((FallingBlock)e).getBlockId(), ((FallingBlock)e).getBlockData());
-				DataTable.floaters.put(b.getUniqueId(), d.getPlayer().getName());
+				DataTable.floaters.put(b.getUniqueId(), d.getPlayer().getUniqueId());
 				b.setDropItem(false);
 				e.remove();
 			}

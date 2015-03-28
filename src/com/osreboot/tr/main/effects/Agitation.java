@@ -51,7 +51,7 @@ public class Agitation extends NodeEffects{
 		Player p = evt.getPlayer();
 		if(d.nodes[14] > 0){
 			if(evt.getFrom().getY() == evt.getTo().getY() && evt.getFrom().getX() != evt.getTo().getX() || evt.getFrom().getZ() != evt.getTo().getZ()){
-				if(p.isSneaking() && active.containsKey(d.getPlayer().getName()) && active.get(p.getName()) == 0 && Util.getPlayerUUIDS(DataTable.floaters, d.getPlayer().getName()).size() == 0){
+				if(p.isSneaking() && active.containsKey(d.getPlayer().getName()) && active.get(p.getName()) == 0 && Util.getPlayerUUIDS(DataTable.floaters, d.getPlayer().getUniqueId()).size() == 0){
 					if(buildup.get(p.getName()) < (40 - d.nodes[14])*4){
 						buildup.put(p.getName(), buildup.get(p.getName()) + 4);
 					}else{

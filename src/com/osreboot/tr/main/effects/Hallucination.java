@@ -50,7 +50,7 @@ public class Hallucination extends NodeEffects{
 		Player p = evt.getPlayer();
 		if(d.nodes[16] > 0){
 			if(evt.getFrom().getX() == evt.getTo().getX() && evt.getFrom().getY() == evt.getTo().getY() && evt.getFrom().getZ() == evt.getTo().getZ()){
-				if(d.getPlayer().isSneaking() && active.containsKey(d.getPlayer().getName()) && active.get(d.getPlayer().getName()) == 0 && Util.getPlayerUUIDS(DataTable.floaters, d.getPlayer().getName()).size() == 0){
+				if(d.getPlayer().isSneaking() && active.containsKey(d.getPlayer().getName()) && active.get(d.getPlayer().getName()) == 0 && Util.getPlayerUUIDS(DataTable.floaters, d.getPlayer().getUniqueId()).size() == 0){
 					if(buildup.get(d.getPlayer().getName()) < (40 - d.nodes[16])*4){
 						buildup.put(d.getPlayer().getName(), buildup.get(d.getPlayer().getName()) + 4);
 					}else{

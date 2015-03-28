@@ -22,30 +22,30 @@ public class Control extends NodeEffects{
 		Player p = evt.getPlayer();
 		if(!crouching.contains(d.getPlayer().getName())){
 			if(p.isSneaking()){
-				for(Entity e : Util.getEntitysFromUUIDs(Util.getPlayerUUIDS(DataTable.floaters, evt.getPlayer().getName()))){
+				for(Entity e : Util.getEntitysFromUUIDs(Util.getPlayerUUIDS(DataTable.floaters, evt.getPlayer().getUniqueId()))){
 					e.setVelocity(new Vector( 
 							e.getVelocity().getX() + (evt.getTo().getX() - evt.getFrom().getX())*(1 + (d.nodes[1]/30)), 
 							e.getVelocity().getY(),
 							e.getVelocity().getZ() + (evt.getTo().getZ() - evt.getFrom().getZ())*(1 + (d.nodes[1]/30))));
 				}
-				if(Util.getPlayerUUIDS(DataTable.floaters, d.getPlayer().getName()).size() > 0) d.ping(200);
+				if(Util.getPlayerUUIDS(DataTable.floaters, d.getPlayer().getUniqueId()).size() > 0) d.ping(200);
 			}else if(p.isSprinting()){
-				for(Entity e : Util.getEntitysFromUUIDs(Util.getPlayerUUIDS(DataTable.floaters, evt.getPlayer().getName()))){
+				for(Entity e : Util.getEntitysFromUUIDs(Util.getPlayerUUIDS(DataTable.floaters, evt.getPlayer().getUniqueId()))){
 					e.setVelocity(new Vector( 
 							e.getVelocity().getX() + (evt.getTo().getX() - evt.getFrom().getX())*(1 + (d.nodes[1]/10)), 
 							e.getVelocity().getY(),
 							e.getVelocity().getZ() + (evt.getTo().getZ() - evt.getFrom().getZ())*(1 + (d.nodes[1]/10))));
 				}
-				if(Util.getPlayerUUIDS(DataTable.floaters, evt.getPlayer().getName()).size() > 0) d.ping(200);
+				if(Util.getPlayerUUIDS(DataTable.floaters, evt.getPlayer().getUniqueId()).size() > 0) d.ping(200);
 			}
 		}
 	}
 
 	@Override
 	public void tick(DataTable d){
-		if(!crouching.contains(d.getPlayer().getName()) && d.getPlayer().isSneaking() && Util.getPlayerUUIDS(DataTable.floaters, d.getPlayer().getName()).size() == 0) crouching.add(d.getPlayer().getName());
+		if(!crouching.contains(d.getPlayer().getName()) && d.getPlayer().isSneaking() && Util.getPlayerUUIDS(DataTable.floaters, d.getPlayer().getUniqueId()).size() == 0) crouching.add(d.getPlayer().getName());
 		if(crouching.contains(d.getPlayer().getName()) && !d.getPlayer().isSneaking()) crouching.remove(d.getPlayer().getName());
-		for(Entity e : Util.getEntitysFromUUIDs(Util.getPlayerUUIDS(DataTable.floaters, d.getPlayer().getName()))){
+		for(Entity e : Util.getEntitysFromUUIDs(Util.getPlayerUUIDS(DataTable.floaters, d.getPlayer().getUniqueId()))){
 			e.setVelocity(new Vector(e.getVelocity().getX()*0.85, e.getVelocity().getY(), e.getVelocity().getZ()*0.85));
 		}
 	}

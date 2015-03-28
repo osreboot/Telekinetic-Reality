@@ -304,8 +304,8 @@ public class Main extends JavaPlugin implements Listener{
 
 	@EventHandler
 	public void onDeath(PlayerDeathEvent evt){
-		Util.clearHash(DataTable.floaters, evt.getEntity().getName());
-		Util.clearHash(DataTable.floatersSnd, evt.getEntity().getName());
+		Util.clearHash(DataTable.floaters, evt.getEntity().getUniqueId());
+		Util.clearHash(DataTable.floatersSnd, evt.getEntity().getUniqueId());
 	}
 	
 	/**
