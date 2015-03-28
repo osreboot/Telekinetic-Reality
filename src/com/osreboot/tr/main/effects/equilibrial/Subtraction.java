@@ -1,4 +1,4 @@
-package com.osreboot.tr.main.effects;
+package com.osreboot.tr.main.effects.equilibrial;
 
 import java.util.Random;
 

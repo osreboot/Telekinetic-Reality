@@ -1,4 +1,4 @@
-package com.osreboot.tr.main.effects;
+package com.osreboot.tr.main.effects.detrimental;
 
 import java.util.HashMap;
 import java.util.Random;

@@ -6,20 +6,20 @@ import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 
-import com.osreboot.tr.main.effects.Agitation;
-import com.osreboot.tr.main.effects.Augmentation;
 import com.osreboot.tr.main.effects.Control;
-import com.osreboot.tr.main.effects.Coordination;
-import com.osreboot.tr.main.effects.Cue;
-import com.osreboot.tr.main.effects.Dissolution;
-import com.osreboot.tr.main.effects.Divergence;
-import com.osreboot.tr.main.effects.Hallucination;
 import com.osreboot.tr.main.effects.Levitation;
-import com.osreboot.tr.main.effects.Liberation;
-import com.osreboot.tr.main.effects.Regulation;
-import com.osreboot.tr.main.effects.Reticence;
-import com.osreboot.tr.main.effects.Subtraction;
 import com.osreboot.tr.main.effects.Syntax;
+import com.osreboot.tr.main.effects.aqueous.Liberation;
+import com.osreboot.tr.main.effects.aqueous.Regulation;
+import com.osreboot.tr.main.effects.detrimental.Agitation;
+import com.osreboot.tr.main.effects.detrimental.Dissolution;
+import com.osreboot.tr.main.effects.equilibrial.Augmentation;
+import com.osreboot.tr.main.effects.equilibrial.Coordination;
+import com.osreboot.tr.main.effects.equilibrial.Cue;
+import com.osreboot.tr.main.effects.equilibrial.Subtraction;
+import com.osreboot.tr.main.effects.oculus.Divergence;
+import com.osreboot.tr.main.effects.oculus.Hallucination;
+import com.osreboot.tr.main.effects.oculus.Reticence;
 
 public class NodeInits {
 	
